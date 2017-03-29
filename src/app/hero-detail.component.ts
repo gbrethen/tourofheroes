@@ -4,15 +4,16 @@ import { Hero } from './hero';
 @Component({
     selector: 'my-hero-detail',
     template: `
-            <div *ngIf="hero">
-              <h2>{{hero.name}} details!</h2>
-              <div><label>id:&nbsp;</label>{{hero.id}}</div>
-              <div class="alert alert-warning">
-                <h4>{{hero.alias}}</h4>
-              </div>
-              <div>
-                <label>name:&nbsp;</label>
-                <input [(ngModel)]="hero.name" placeholder="name">
+            <div *ngIf="hero" class="row">
+              <div class="col-sm-6 col-md-6">
+                <div class="thumbnail">
+                  <img src="../images/{{hero.alias}}.png">
+                  <div class="caption">
+                    <h3>{{hero.alias}}</h3>
+                    <p><b>Real Name: </b>{{hero.name}}</p>
+                    <p>{{hero.story}}</p>
+                  </div>
+                </div>
               </div>
             </div>
     `
