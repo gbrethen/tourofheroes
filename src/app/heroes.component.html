@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="heroes">
+              <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+                <span class="badge">{{hero.id}}</span>&nbsp;{{hero.name}}
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-8">
+            <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+          </div>
+        </div>
+    </div>
+</div>
