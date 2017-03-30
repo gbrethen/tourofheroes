@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
     </div>
     <nav aria-label="Page navigation">
         <ul class="pagination">
+            <li><a class="btn btn-default" routerLink="/dashboard">Dashboard</a></li>
             <li><a class="btn btn-default" routerLink="/heroes">Heroes</a></li>
         </ul>
     </nav>

@@ -9,10 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
+require('rxjs/add/operator/switchMap');
 var hero_1 = require('./hero');
+var hero_service_1 = require('./hero.service');
 var HeroDetailComponent = (function () {
-    function HeroDetailComponent() {
+    function HeroDetailComponent(heroService, route, location) {
+        this.heroService = heroService;
+        this.route = route;
+        this.location = location;
     }
+    HeroDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params
+            .switchMap(function (params) { return _this.heroService.getHero(+params['id']); })
+            .subscribe(function (hero) { return _this.hero = hero; });
+    };
+    HeroDetailComponent.prototype.getHero = function (id) {
+        return this.heroService.getHeroes().then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
+    };
+    HeroDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', hero_1.Hero)
@@ -20,9 +39,9 @@ var HeroDetailComponent = (function () {
     HeroDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-hero-detail',
-            template: "\n            <div *ngIf=\"hero\" class=\"row\">\n              <div class=\"col-sm-6 col-md-6\">\n                <div class=\"thumbnail\">\n                  <img src=\"../images/{{hero.alias}}.png\">\n                  <div class=\"caption\">\n                    <h3>{{hero.alias}}</h3>\n                    <p><b>Real Name: </b>{{hero.name}}</p>\n                    <p>{{hero.story}}</p>\n                  </div>\n                </div>\n              </div>\n            </div>\n    "
+            templateUrl: '../app/hero-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute, common_1.Location])
     ], HeroDetailComponent);
     return HeroDetailComponent;
 }());

@@ -9,21 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_heroes_1 = require('./mock-heroes');
-var HeroService = (function () {
-    function HeroService() {
+var hero_service_1 = require('./hero.service');
+var DashboardComponent = (function () {
+    function DashboardComponent(heroService) {
+        this.heroService = heroService;
+        this.heroes = [];
     }
-    HeroService.prototype.getHeroes = function () {
-        return Promise.resolve(mock_heroes_1.HEROES);
+    ;
+    DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.heroService.getHeroes()
+            .then(function (heroes) { return _this.heroes = heroes.slice(1, 5); });
     };
-    HeroService.prototype.getHero = function (id) {
-        return this.getHeroes().then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
-    };
-    HeroService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], HeroService);
-    return HeroService;
+    DashboardComponent = __decorate([
+        core_1.Component({
+            selector: 'my-dashboard',
+            templateUrl: '../app/dashboard.component.html'
+        }), 
+        __metadata('design:paramtypes', [hero_service_1.HeroService])
+    ], DashboardComponent);
+    return DashboardComponent;
 }());
-exports.HeroService = HeroService;
-//# sourceMappingURL=hero.service.js.map
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map
