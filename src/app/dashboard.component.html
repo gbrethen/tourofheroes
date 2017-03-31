@@ -4,7 +4,7 @@
         <div class="grid grid-pad">
             <a *ngFor="let hero of heroes" [routerLink]="['/detail', hero.id]" class="col-md-4">
                 <div class="module hero">
-                    <h4>{{hero.alias}}</h4>
+                    <img alt="{{hero.alias}}" src="../images/{{hero.alias}}.png" style="width:100px; height:100px;">
                 </div>
             </a>
         </div>
