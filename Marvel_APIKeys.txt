@@ -1,2 +1,5 @@
 Public Key: c4ea4cfb65c9023aa3b6e48d64b92d81
 Private Key: c56ead20e4b35cd919e561688656b029ca90dbf2
+
+Comic Vine API
+apikey: 8bb7e569c4a4e9348e3d6b544f727a2f362e37a9
