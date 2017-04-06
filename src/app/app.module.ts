@@ -15,6 +15,7 @@ import { AppComponent }  from './app.component';
   imports:      [
     BrowserModule,
     FormsModule,
+    HttpModule,
     AppRoutingModule
   ],
   declarations: [ AppComponent, DashboardComponent, HeroDetailComponent, HeroesComponent ],
