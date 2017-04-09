@@ -7,7 +7,7 @@ import { HeroImage } from './hero.image';
 
 @Injectable()
 
-export class HeroImageService {
+export class HeroImageService  {
     private imgUrl = 'https://gateway.marvel.com:443/v1/public/characters';
     private params = '?ts=1&apikey=c4ea4cfb65c9023aa3b6e48d64b92d81&hash=0ddae0d8ac22c2587d1a8a92225499e1';
 
@@ -15,7 +15,10 @@ export class HeroImageService {
 
     getImg(id: number): Promise<HeroImage> {
         const url = `${this.imgUrl}/${id}${this.params}`;
-
+        console.log("Hero Object: ", this.http.get(url)
+                .toPromise()
+                .then(response => response.json().data as HeroImage)
+                .catch(this.handleError));
         return this.http.get(url)
                 .toPromise()
                 .then(response => response.json().data as HeroImage)
