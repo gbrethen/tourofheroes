@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { HeroImage } from './hero.image';
+import { HeroImage } from '../hero.image';
 
 @Injectable()
 
